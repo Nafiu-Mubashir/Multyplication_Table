@@ -17,7 +17,8 @@
         p {
             font-size: 13px;
         }
-        td{
+
+        td {
             width: auto;
         }
     </style>
@@ -29,24 +30,36 @@
                     certain number to another</p>
                 <input type="text" class="form-control" placeholder="Enter the number of row" id="row">
                 <input type="text" class="form-control mt-2" placeholder="Enter the number of column" id="column">
+                <input type="text" class="form-control mt-2" placeholder="Start from" id="start">
                 <button class="btn btn-success mt-2" onclick="generateTable()">Generate</button>
             </div>
         </div>
-        <table id="result" border="1" cellspacing = "5" class="table"></table>
+        <!-- <table id="result" border="1" cellspacing = "5" class="table">
+            <tr>
+
+            </tr>
+        </table> -->
+        <div id="result" class="mt-3"></div>
     </section>
 
     <script>
         function generateTable() {
-            let numOfRows = row.value;
-            let numOfColumn = column.value;
-            let display = "<tr>";
-            for (let i = 1; i <= numOfRows; i++) {
+            let numOfRows = parseInt(row.value);
+            let numOfColumn = parseInt(column.value);
+            let st = parseInt(start.value);
+            // st --
+            let display = "<table border=1 align=center><tr>";
+            for (let i = st; i <= numOfRows; i++) {
+                display += "<td align=center>" + i + " Times ";
+                display += "<table border=1>";
                 for (let j = 1; j <= numOfColumn; j++) {
-                    display += "<td>" + i + " * " + j + " = " + i * j + "</td>";
+                    display += "<tr><td align=center>" + i + " X " + j + " = " + i * j + "</td>"
                 }
-                display += "</tr>";
+                display += "</tr></td>";
+                display += "</tr></table>"
             }
             result.innerHTML = display;
+            console.log(result.innerHTML)
         }
     </script>
 </body>
